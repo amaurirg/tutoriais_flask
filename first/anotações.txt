@@ -1,0 +1,13 @@
+Para rodar o projeto em Flask é mais fácil exportar as variáveis de ambiente conforme abaixo:
+export FLASK_APP=first.py
+export FLASK_ENV=development
+
+Para evitar o circular import, onde o Python tenta importar o módulo views e volta para o app:
+Cria uma função para instanciar o app
+def create_app():
+    app = FLASK_APP(__name__)
+    return app
+E exporta as VA da seguinte forma:
+export FLASK_APP=app:create_app
+export FLASK_ENV=development
+
